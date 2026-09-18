@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mihai Catrinar | Educator. Speaker. Performance Coach. Explorer.</title>
+<meta name="description" content="Mihai Catrinar is an Education and Experiential Learning Leader with 18 years of international experience across IB schools. Learn. Experience. Reflect. Transfer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f3f2f2;
+    --bg-hover:#eae8e7;
+    --ink:#201e1d;
+    --red:#ec3013;
+    --text:#3d3a38;
+    --rule:2px solid #201e1d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Archivo",Arial,sans-serif;
+    background:var(--bg);color:var(--ink);
+    font-size:16px;line-height:1.8;
+  }
+  ::selection{background:var(--red);color:#fff}
+  a{color:var(--ink);text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:4px}
+  a:hover{color:var(--red)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1200px;margin:0 auto;padding-left:5vw;padding-right:5vw}
+  section{scroll-margin-top:70px}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:24px}
+  .h2{font-size:clamp(32px,4.5vw,56px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1.02}
+  .lede{font-size:16px;line-height:1.8;color:var(--text);max-width:58ch}
+
+  /* ---------- Motion ---------- */
+  .fx{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .fx.in{opacity:1;transform:none}
+  .fx.d1{transition-delay:.1s}.fx.d2{transition-delay:.2s}.fx.d3{transition-delay:.3s}
+  @keyframes slide{to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .fx{opacity:1;transform:none}
+  }
+
+  .progress{position:fixed;top:0;left:0;height:4px;width:0;background:var(--red);z-index:120}
+
+  /* ---------- Nav ---------- */
+  .nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:var(--rule)}
+  .nav-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:10px 32px;padding:18px 5vw}
+  .brand{font-weight:900;font-size:15px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--ink)}
+  .brand span{color:var(--red)}
+  .nav-links{display:flex;flex-wrap:wrap;gap:6px 26px;margin-left:auto;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;list-style:none}
+  .nav-links a{text-decoration:none;transition:color .2s ease}
+  .nav-links a:hover{color:var(--red)}
+  @media (max-width:700px){.nav-links li:nth-child(n+5){display:none}}
+
+  /* ---------- Hero ---------- */
+  header#home{border-bottom:var(--rule)}
+  .hero-top{max-width:1200px;margin:0 auto;padding:clamp(72px,11vh,140px) 5vw clamp(56px,8vh,100px)}
+  .hero-top .eyebrow{margin-bottom:28px}
+  .hero-top h1{font-size:clamp(52px,10vw,140px);line-height:.92;font-weight:900;letter-spacing:-.03em;text-transform:uppercase;margin-bottom:36px}
+  .hero-top h1 .out{color:transparent;-webkit-text-stroke:2.5px var(--ink)}
+  .hero-top .tag{max-width:34ch;font-size:clamp(20px,2.4vw,30px);line-height:1.35;font-weight:600}
+  .hero-split{border-top:var(--rule);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+  .hero-photo{display:flex;align-items:center;justify-content:center;padding:clamp(40px,6vw,72px) 5vw}
+  .hero-photo img{
+    width:100%;max-width:389px;height:auto;
+    border:var(--rule);
+    filter:grayscale(1);transition:filter .6s ease;
+  }
+  .hero-photo:hover img{filter:grayscale(0)}
+  .hero-side{border-left:var(--rule);padding:clamp(48px,6vw,88px) 5vw;display:flex;flex-direction:column;gap:32px;justify-content:center}
+  @media (max-width:700px){.hero-side{border-left:none;border-top:var(--rule)}}
+  .btn{display:inline-block;padding:16px 28px;font-weight:800;font-size:14px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .2s ease,color .2s ease,transform .15s ease}
+  .btn:active{transform:scale(.97)}
+  .btn-primary{background:var(--red);color:#fff}
+  .btn-primary:hover{background:var(--ink);color:#fff}
+  .btn-ghost{border:var(--rule);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:#fff}
+
+  /* ---------- Marquee ---------- */
+  .mq{border-bottom:var(--rule);background:var(--red);overflow:hidden;padding:14px 0}
+  .mq .track{display:flex;width:max-content;animation:slide 22s linear infinite}
+  .mq span{font-weight:900;text-transform:uppercase;white-space:nowrap;font-size:clamp(16px,2vw,22px);letter-spacing:.08em;color:#fff;padding:0 .6em}
+  .mq span i{font-style:normal;color:var(--ink)}
+
+  /* ---------- Sections ---------- */
+  .sec{border-bottom:var(--rule)}
+  .pad{padding-top:clamp(72px,10vh,130px);padding-bottom:clamp(72px,10vh,130px)}
+  .two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:56px}
+  .who-copy{display:flex;flex-direction:column;gap:26px;font-size:16px;line-height:1.9;color:var(--text);max-width:58ch}
+  .who-copy .motto{font-weight:900;text-transform:uppercase;font-size:19px;letter-spacing:.04em;color:var(--ink)}
+  .who-copy .motto b{color:var(--red)}
+
+  /* ---------- Stats ---------- */
+  .stats-band{border-top:var(--rule)}
+  .stats{max-width:1200px;margin:0 auto;padding:clamp(40px,6vh,72px) 5vw;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:48px}
+  .stat .big{font-size:clamp(44px,5vw,64px);font-weight:900;color:var(--red);line-height:1}
+  .stat .cap{margin-top:12px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;line-height:1.6}
+
+  /* ---------- Rows ---------- */
+  .rows{display:flex;flex-direction:column;border-top:var(--rule)}
+  .row{display:grid;grid-template-columns:110px minmax(0,2fr) minmax(0,1.4fr) auto;gap:16px 32px;align-items:baseline;padding:34px 8px;border-bottom:var(--rule);text-decoration:none;transition:background .25s ease,padding .25s ease}
+  a.row:hover{background:var(--bg-hover);padding-left:20px}
+  .row .yr{font-size:14px;font-weight:700;color:var(--red)}
+  .row .ti{font-size:clamp(19px,2vw,24px);font-weight:800;line-height:1.25;color:var(--ink)}
+  .row .bl{font-size:14px;line-height:1.6;color:var(--text)}
+  .row .kind{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;color:var(--ink);transition:color .25s ease,transform .25s ease}
+  a.row:hover .kind{color:var(--red);transform:translateX(6px)}
+  @media (max-width:800px){.row{grid-template-columns:90px 1fr}.row .bl{grid-column:2}.row .kind{grid-column:2}}
+
+  /* ---------- Proof photos ---------- */
+  .proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-top:56px}
+  .proof figure{margin:0}
+  .proof .ph{position:relative;aspect-ratio:16/10;overflow:hidden;border:var(--rule)}
+  .proof img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);cursor:zoom-in;transition:filter .5s ease,transform .7s ease}
+  .proof figure:hover img{filter:grayscale(0);transform:scale(1.04)}
+  .proof figcaption{padding:14px 0 0;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+
+  /* ---------- ACT (red) ---------- */
+  .act{border-bottom:var(--rule);background:var(--red);color:#fff}
+  .act .inner{max-width:1200px;margin:0 auto;padding:clamp(80px,12vh,150px) 5vw}
+  .act .eyebrow{color:#fff}
+  .act h2{font-size:clamp(40px,7vw,96px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:.95;margin-bottom:28px}
+  .act .lede{color:#fff;max-width:52ch;font-size:17px;margin-bottom:72px}
+  .act-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:48px;padding-top:40px;border-top:2px solid #fff}
+  .act-cols .h{font-size:22px;font-weight:900;letter-spacing:.02em}
+  .act-cols p{margin-top:12px;font-size:15px;line-height:1.75;max-width:32ch}
+  .act-boards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;margin-top:64px}
+  .act-boards figure{margin:0;border:6px solid #fff;background:#fff}
+  .act-boards img{width:100%;aspect-ratio:16/10;object-fit:cover;cursor:zoom-in;transition:transform .5s ease}
+  .act-boards img:hover{transform:scale(1.02)}
+  .act-boards figcaption{padding:12px 10px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+  .act-cta{margin-top:72px;display:flex;flex-wrap:wrap;gap:20px;align-items:center}
+  .act-cta .btn{background:#fff;color:var(--red)}
+  .act-cta .btn:hover{background:var(--ink);color:#fff}
+  .act-cta span{font-size:14px}
+
+  /* ---------- Writing ---------- */
+  .writing-side .h2{margin-bottom:20px}
+  .writing-side p{max-width:44ch}
+  .writing-side .all{margin-top:32px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+  .postrow{display:flex;flex-direction:column;gap:8px;padding:28px 8px;border-bottom:var(--rule);text-decoration:none;transition:background .25s ease,padding .25s ease}
+  .postrow:hover{background:var(--bg-hover);padding-left:20px}
+  .postrow .dt{font-size:13px;font-weight:700;color:var(--red)}
+  .postrow .ti{font-size:19px;font-weight:800;line-height:1.3;color:var(--ink)}
+
+  /* ---------- Athlete ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+  .gallery figure{margin:0}
+  .gallery .ph{position:relative;aspect-ratio:3/4;overflow:hidden;border:var(--rule)}
+  .gallery img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);cursor:zoom-in;transition:filter .5s ease,transform .7s ease}
+  .gallery figure:hover img{filter:grayscale(0);transform:scale(1.05)}
+  .gallery figcaption{padding:14px 0 0;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+
+  /* ---------- Contact ---------- */
+  .contact{background:var(--ink);color:var(--bg)}
+  .contact .inner{max-width:1200px;margin:0 auto;padding:clamp(90px,13vh,160px) 5vw}
+  .contact .eyebrow{color:var(--red)}
+  .contact h2{font-size:clamp(44px,9vw,120px);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:.95;margin-bottom:30px}
+  .contact h2 .out{color:transparent;-webkit-text-stroke:2px var(--red)}
+  .contact p{max-width:52ch;font-size:17px;line-height:1.8;color:#c9c5c2;margin-bottom:44px}
+  .chips{display:flex;flex-wrap:wrap;gap:14px}
+  .chip{display:inline-block;padding:14px 26px;border:2px solid #4a4644;color:var(--bg);font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:border-color .2s ease,color .2s ease,background .2s ease}
+  .chip:hover{border-color:var(--red);background:var(--red);color:#fff}
+  footer{background:var(--ink);color:#8b8683;border-top:2px solid #4a4644;font-size:13px}
+  footer .inner{max-width:1200px;margin:0 auto;padding:26px 5vw;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  footer a{color:#c9c5c2;text-decoration-color:var(--red)}
+  footer a:hover{color:#fff}
+
+  /* ---------- Lightbox ---------- */
+  .lightbox{position:fixed;inset:0;background:rgba(32,30,29,.96);display:none;align-items:center;justify-content:center;z-index:140;padding:28px;cursor:zoom-out}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:94vw;max-height:88vh;border:6px solid #fff}
+  .lightbox .cap{position:absolute;bottom:20px;left:0;right:0;text-align:center;color:#c9c5c2;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a class="brand" href="#home">Mihai Catrinar<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#who">About</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#speaking">Speaking</a></li>
+      <li><a href="#transfer">Course</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#athlete">Adventure</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="home">
+  <div class="hero-top">
+    <div class="eyebrow fx in">Educator / Speaker / Performance coach / Explorer</div>
+    <h1 class="fx in">Mihai<br><span class="out">Catrinar</span></h1>
+    <p class="tag fx in d1">Empowering learners to grow, adapt and thrive through uncertainty.</p>
+  </div>
+  <div class="hero-split">
+    <div class="hero-photo"><img src="assets/mihai-portrait.jpg" alt="Mihai Catrinar portrait"></div>
+    <div class="hero-side">
+      <p class="lede fx in d1">Education and Experiential Learning Leader with 18 years of international experience across International Baccalaureate (IB) schools in the Middle East, South-East Asia and Europe. School leadership, learning design, movement and outdoor learning: building capabilities people carry far beyond the place where they learned them.</p>
+      <p class="fx in d2" style="font-weight:900;text-transform:uppercase;font-size:17px;letter-spacing:.06em">Learn. Experience. Reflect. <span style="color:var(--red)">Transfer.</span></p>
+      <div class="fx in d2" style="display:flex;flex-wrap:wrap;gap:14px">
+        <a href="#speaking" class="btn btn-primary">Hire me to speak</a>
+        <a href="#who" class="btn btn-ghost">More about me</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mq" aria-hidden="true">
+  <div class="track">
+    <span>Grow <i>/</i> Adapt <i>/</i> Thrive <i>/</i> Move with purpose <i>/</i> Learn through movement <i>/</i> Learn. Experience. Reflect. Transfer. <i>/</i></span>
+    <span>Grow <i>/</i> Adapt <i>/</i> Thrive <i>/</i> Move with purpose <i>/</i> Learn through movement <i>/</i> Learn. Experience. Reflect. Transfer. <i>/</i></span>
+  </div>
+</div>
+
+<section id="who" class="sec">
+  <div class="wrap pad two-col">
+    <div>
+      <div class="eyebrow fx">01 / Who am I</div>
+      <h2 class="h2 fx">Purpose driven.<br>People focused.<br>Always learning.</h2>
+    </div>
+    <div class="who-copy fx d1">
+      <p>I am a Romanian-born educator working at the intersection of school leadership, learning design, professional learning, movement and experiential education. I believe learning becomes powerful when people can use it beyond the place where they learned it.</p>
+      <p>Today I am Middle Years Programme (MYP) Assistant Head and Physical and Health Education (PHE) Teacher at Albanian College Tirana, and a Professional Learning Coach and Facilitator at Education to Change the World, where I work alongside best-selling author Julie Stern. Together we co-designed the <a href="https://www.conceptualtransfer.com/courses/conceptual-transfer-in-physical-ed-health" target="_blank" rel="noopener">Physical Education and Health Learning that Transfers</a> course and certified over 100 physical educators worldwide.</p>
+      <p>Beyond the classroom I explore the same ideas through Outdoor Joy, using movement, challenge, nature, reflection and connection as tools for learning and human development. The question behind everything I do:</p>
+      <p class="motto">How do we design experiences that build capabilities people can <b>transfer to life?</b></p>
+    </div>
+  </div>
+  <div class="stats-band">
+    <div class="stats">
+      <div class="stat fx"><div class="big"><span data-count="18">0</span>+</div><div class="cap">Years of international education</div></div>
+      <div class="stat fx d1"><div class="big"><span data-count="100">0</span>+</div><div class="cap">Physical educators certified worldwide</div></div>
+      <div class="stat fx d2"><div class="big">MA</div><div class="cap">Technology, Education and Learning, University of Leeds + Harvard Business School Online, Leading Learning</div></div>
+      <div class="stat fx d3"><div class="big">IB</div><div class="cap">PYP and MYP educator, workshop leader / Romanian, English, French</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="journey" class="sec">
+  <div class="wrap pad">
+    <div class="eyebrow fx">02 / The journey</div>
+    <h2 class="h2 fx" style="margin-bottom:20px">Six schools. Three continents.</h2>
+    <p class="lede fx" style="margin-bottom:64px">Every stop taught me something new about how people learn, lead and grow.</p>
+    <div class="rows">
+      <div class="row fx"><span class="yr">2023+</span><span class="ti">Albanian College Tirana</span><span class="bl">MYP Assistant Head and PHE Teacher: leading secondary operations, coaching teachers, Advisory and PHE for Grades 6 to 10, international field trips.</span><span class="kind">Tirana, Albania</span></div>
+      <div class="row fx"><span class="yr">2021+</span><span class="ti">Education to Change the World</span><span class="bl">Professional Learning Coach and Facilitator alongside Julie Stern: conceptual transfer coaching, curriculum design, the PE online course with 100+ certified educators.</span><span class="kind">Worldwide</span></div>
+      <div class="row fx"><span class="yr">2018-22</span><span class="ti">Arab International Academy</span><span class="bl">Physical and Health Education Coordinator from Early Years to MYP: PE curriculum design, blended learning, wellbeing initiatives, sports programme and leagues.</span><span class="kind">Doha, Qatar</span></div>
+      <div class="row fx"><span class="yr">2015-18</span><span class="ti">Stamford American International School</span><span class="bl">PE Teacher: cross-country and basketball coaching, PYP Connect Singapore presenter, master research on student fitness app use.</span><span class="kind">Singapore</span></div>
+      <div class="row fx"><span class="yr">2013-15</span><span class="ti">SEK International School Qatar</span><span class="bl">PE Teacher: pioneered digital technology in Early Years PE, award for educational innovation, presenter at Qatar's Teaching and Learning Forum.</span><span class="kind">Doha, Qatar</span></div>
+      <div class="row fx"><span class="yr">2008-13</span><span class="ti">Abu Dhabi Grammar School</span><span class="bl">PE Teacher: adapted the Canadian PE curriculum, coached the football and basketball teams, opened the international chapter of my career.</span><span class="kind">Abu Dhabi, UAE</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="speaking" class="sec">
+  <div class="wrap pad">
+    <div class="eyebrow fx">03 / Hire me to speak</div>
+    <h2 class="h2 fx" style="margin-bottom:20px">Talks, workshops and webinars</h2>
+    <p class="lede fx" style="margin-bottom:64px">From conference stages to virtual classrooms: conceptual learning in PE, well-being, self-efficacy and student agency. I always make the room move.</p>
+    <div class="rows">
+      <a class="row fx" href="https://fitnwitpe.wordpress.com/2022/03/04/fitness-fanatics-and-physical-education-job-alike-presentations-at-toddle-ties-2022/" target="_blank" rel="noopener">
+        <span class="yr">2022</span><span class="ti">Toddle TIES: Fitness Fanatics and PE Job Alike</span><span class="bl">Well-being, self-efficacy and identity-based habits, plus a job-alike on the story your course tells.</span><span class="kind">Conference &rarr;</span>
+      </a>
+      <a class="row fx" href="https://www.youtube.com/watch?v=UMsb0_iomHo" target="_blank" rel="noopener">
+        <span class="yr">2020</span><span class="ti">Conceptual Understanding in Physical Education</span><span class="bl">Hosted by 4 Generations 4 Education: a grade 5 Invasion Games storyboard built on the ACT model, with Minute to Win It activities.</span><span class="kind">Webinar &rarr;</span>
+      </a>
+      <a class="row fx" href="https://learn.toddleapp.com/talk_post/physical-education-in-the-virtual-pyp-classroom/" target="_blank" rel="noopener">
+        <span class="yr">2020</span><span class="ti">Physical Education in the Virtual PYP Classroom</span><span class="bl">Making PE come alive in remote learning: planning units that prioritise student understanding.</span><span class="kind">Toddle Talk &rarr;</span>
+      </a>
+      <div class="row fx">
+        <span class="yr">2023+</span><span class="ti">Job-Alike and parent learning experiences</span><span class="bl">Designing and facilitating professional learning across the local IB community, including Julie Stern's Agency, Boundaries and Connection for parents.</span><span class="kind">Ongoing</span>
+      </div>
+      <div class="row fx">
+        <span class="yr">2014-16</span><span class="ti">Qatar Teaching and Learning Forum, PYP Connect Singapore</span><span class="bl">Presenter on digital technology in PE and job-alike sessions across IB schools in the region.</span><span class="kind">Presenter</span>
+      </div>
+    </div>
+    <div class="proof">
+      <figure class="fx"><div class="ph"><img src="assets/workshop-coaches.jpg" alt="Mihai facilitating a professional learning workshop with coaches" data-lightbox data-caption="Facilitating professional learning with coaches"></div><figcaption>With coaches, in person</figcaption></figure>
+      <figure class="fx d1"><div class="ph"><img src="assets/virtual-class.jpg" alt="Live online learning session led by Mihai" data-lightbox data-caption="Guiding inquiry live online, one movement question at a time"></div><figcaption>Live online learning</figcaption></figure>
+      <figure class="fx d2"><div class="ph"><img src="assets/classroom-whiteboard.jpg" alt="Whiteboard covered with end-of-year student messages" data-lightbox data-caption="End-of-year messages left by my students"></div><figcaption>What students remember</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="transfer" class="act">
+  <div class="inner">
+    <div class="eyebrow fx">04 / Learning that Transfers</div>
+    <h2 class="fx">Acquire.<br>Connect.<br>Transfer.</h2>
+    <p class="lede fx d1">The ACT model, created by Julie Stern, Kayla Duncan and Trevor Aleo, turns PE lessons into understanding students carry for life: from organizing ideas, to connecting concepts, to transferring learning into real-life situations.</p>
+    <div class="act-cols">
+      <div class="fx"><div class="h">A / Acquire</div><p>Supporting students to organize pieces of information into sets of ideas.</p></div>
+      <div class="fx d1"><div class="h">C / Connect</div><p>Making connections and understanding conceptual relationships.</p></div>
+      <div class="fx d2"><div class="h">T / Transfer</div><p>Transferring new understanding into real-life situations, from similar to dissimilar contexts.</p></div>
+    </div>
+    <div class="act-boards">
+      <figure class="fx"><img src="assets/sketchnote-conceptual-pe.jpg" alt="Sketchnote of the Conceptual Understanding in Physical Education webinar" data-lightbox data-caption="Conceptual Understanding in Physical Education, sketchnote by Ania Cholewinska (@edu.ideas)"><figcaption>Webinar sketchnote by Ania Cholewinska</figcaption></figure>
+      <figure class="fx d1"><img src="assets/transfer-map.jpg" alt="Planning-for-transfer map with academic to real-world and similar to dissimilar axes" data-lightbox data-caption="Planning for transfer: from academic and similar to real-world and dissimilar contexts"><figcaption>Planning for transfer</figcaption></figure>
+    </div>
+    <div class="act-cta fx">
+      <a class="btn" href="https://www.conceptualtransfer.com/courses/conceptual-transfer-in-physical-ed-health" target="_blank" rel="noopener">Join the PE and Health course</a>
+      <span>Co-led with author and global consultant Julie Stern. Over 100 educators certified worldwide.</span>
+    </div>
+  </div>
+</section>
+
+<section id="writing" class="sec">
+  <div class="wrap pad two-col">
+    <div class="writing-side">
+      <div class="eyebrow fx">05 / Writing</div>
+      <h2 class="h2 fx">From the FitnWitPE blog and beyond</h2>
+      <p class="lede fx">Reflections on conceptual understanding, modern literacies and what students themselves say about PE today.</p>
+      <div class="all fx"><a href="https://fitnwitpe.wordpress.com/" target="_blank" rel="noopener">All posts &rarr;</a></div>
+    </div>
+    <div class="rows fx">
+      <a class="postrow" href="https://fitnwitpe.wordpress.com/2023/05/08/physical-education-today-a-student-perspective/" target="_blank" rel="noopener"><span class="dt">May 2023</span><span class="ti">Physical Education Today: A Student Perspective</span></a>
+      <a class="postrow" href="https://fitnwitpe.wordpress.com/2022/10/27/modern-literacies-module-4-reflections/" target="_blank" rel="noopener"><span class="dt">Oct 2022</span><span class="ti">Modern Literacies: Module 4 Reflections</span></a>
+      <a class="postrow" href="https://www.faria.org/curriculum-insights/curriculum-insights-issue2#p2" target="_blank" rel="noopener"><span class="dt">Faria Curriculum Insights</span><span class="ti">The Relationship Between Self-efficacy and Well-Being</span></a>
+      <a class="postrow" href="https://fitnwitpe.wordpress.com/2020/10/26/conceptual-understanding-in-physical-education-2/" target="_blank" rel="noopener"><span class="dt">Oct 2020</span><span class="ti">Conceptual Understanding in Physical Education</span></a>
+      <a class="postrow" href="https://blogs.ibo.org/sharingpyp/2014/12/18/tech-and-pe-in-early-years/" target="_blank" rel="noopener"><span class="dt">Dec 2014</span><span class="ti">Tech and PE in Early Years, on the IB Sharing PYP blog</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="athlete" class="sec">
+  <div class="wrap" style="padding-top:clamp(72px,10vh,130px);padding-bottom:clamp(48px,7vh,80px)">
+    <div class="eyebrow fx">06 / Athlete and adventurer</div>
+    <h2 class="h2 fx" style="margin-bottom:20px">I practice what I teach</h2>
+    <p class="lede fx">Trail races, paddleboarding, mountain trails and a <a href="https://mihaicatrinar.wordpress.com/2018/12/02/flight-385-the-adventurous-oman/" target="_blank" rel="noopener">385-metre abseil in Oman</a>. Movement is how I learn, recover and connect. More on my <a href="https://mihaicatrinar.wordpress.com/" target="_blank" rel="noopener">fitness blog</a>, and fitness is a family value: watch <a href="https://www.youtube.com/channel/UCtBkFViTmyNuVYV7NtsQxRw" target="_blank" rel="noopener">my daughter's channel</a> and <a href="https://www.youtube.com/channel/UCwcn3LGvQpKvXveSB7HXPOg" target="_blank" rel="noopener">my son's channel</a>.</p>
+  </div>
+  <div class="wrap gallery" style="padding-bottom:clamp(72px,10vh,130px)">
+    <figure class="fx"><div class="ph"><img src="assets/trail-race.jpg" alt="Mihai and his son at a trail race start line" data-lightbox data-caption="Race day with my son"></div><figcaption>Trail racing</figcaption></figure>
+    <figure class="fx d1"><div class="ph"><img src="assets/paddleboard.jpg" alt="Mihai and his son stand-up paddleboarding" data-lightbox data-caption="Paddleboarding with my son"></div><figcaption>On the water</figcaption></figure>
+    <figure class="fx d2"><div class="ph"><img src="assets/sheep-romania.jpg" alt="Mihai walking through a flock of sheep in Romania" data-lightbox data-caption="Back to my Romanian roots"></div><figcaption>Romanian roots</figcaption></figure>
+    <figure class="fx"><div class="ph"><img src="assets/canyon-poetry.jpg" alt="A poetry book held open in front of a turquoise canyon river" data-lightbox data-caption="Poetry in the canyon"></div><figcaption>Canyon days</figcaption></figure>
+    <figure class="fx d1"><div class="ph"><img src="assets/winter-hot-chocolate.jpg" alt="Mihai and his daughter with a hot chocolate in the mountains" data-lightbox data-caption="Winter days with my daughter"></div><figcaption>Mountain winters</figcaption></figure>
+    <figure class="fx d2"><div class="ph"><img src="assets/family.jpg" alt="Family selfie taken from above" data-lightbox data-caption="The whole team, together"></div><figcaption>The whole team</figcaption></figure>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="inner">
+    <div class="eyebrow fx">07 / Contact</div>
+    <h2 class="fx d1">Let's <span class="out">work</span><br>together.</h2>
+    <p class="fx d2">Want me to speak at your school, run a workshop or support your curriculum team? Write me a short note about your school, your audience and the dates you have in mind.</p>
+    <div class="chips fx d3">
+      <a class="chip" href="mailto:mihaicatrinar@gmail.com">mihaicatrinar@gmail.com</a>
+      <a class="chip" href="https://www.linkedin.com/in/mihaicatrinar" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="chip" href="https://twitter.com/fitnwitpe" target="_blank" rel="noopener">Twitter @fitnwitpe</a>
+      <a class="chip" href="https://linktr.ee/mihaicatrinar" target="_blank" rel="noopener">Linktree</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="inner">
+    <p>&copy; 2026 Mihai Catrinar. All rights reserved.</p>
+    <p><a href="https://linktr.ee/mihaicatrinar" target="_blank" rel="noopener">All my links</a></p>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <img src="" alt="">
+  <p class="cap"></p>
+</div>
+
+<script>
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll progress
+  var barEl = document.getElementById('progress');
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    barEl.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+  }
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Reveals
+  var items = document.querySelectorAll('.fx');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  // Count-up stats
+  var counters = document.querySelectorAll('[data-count]');
+  function runCount(el){
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    if (reduce) { el.textContent = target; return; }
+    var start = null, dur = 1400;
+    function step(ts){
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window) {
+    var co = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { runCount(e.target); co.unobserve(e.target); }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function(el){ co.observe(el); });
+  } else {
+    counters.forEach(function(el){ el.textContent = el.getAttribute('data-count'); });
+  }
+
+  // Lightbox
+  var lb = document.getElementById('lightbox');
+  var lbImg = lb.querySelector('img');
+  var lbCap = lb.querySelector('.cap');
+  document.querySelectorAll('[data-lightbox]').forEach(function(img){
+    img.addEventListener('click', function(){
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCap.textContent = img.getAttribute('data-caption') || '';
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeLb(){ lb.classList.remove('open'); lbImg.src = ''; document.body.style.overflow = ''; }
+  lb.addEventListener('click', closeLb);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLb(); });
+</script>
+
+</body>
+</html>
